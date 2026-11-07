@@ -1,0 +1,30 @@
+Ý TƯỞNG SẢN PHẨM CUỐI KHÓA JSI — FOCUSFORGE
+
+1. Tên sản phẩm
+FocusForge.
+
+2. Chủ đề sản phẩm web
+FocusForge là website hỗ trợ học sinh tổ chức việc học và duy trì sự tập trung. Người dùng chia mục tiêu thành nhiệm vụ nhỏ, học theo phiên Pomodoro 25 phút và ghi nhận tiến độ đã hoàn thành.
+
+3. Các tính năng dự kiến
+- Firebase Authentication: đăng ký, đăng nhập email/mật khẩu, đăng xuất; có thể mở rộng Google Sign-In.
+- Pomodoro Timer: bắt đầu, tạm dừng, tiếp tục và đặt lại phiên tập trung 25 phút.
+- Danh sách nhiệm vụ: thêm nhiệm vụ, đánh dấu hoàn thành.
+- Theo dõi tiến độ: hiển thị tỷ lệ nhiệm vụ đã hoàn thành.
+- localStorage: lưu danh sách nhiệm vụ trên trình duyệt hiện tại.
+- Responsive: hiển thị tốt trên máy tính và điện thoại.
+- Hướng phát triển: Firestore đồng bộ dữ liệu, thống kê tuần, lịch học và gợi ý lịch học theo mục tiêu. Đây là các tính năng đề xuất, chưa có trong phiên bản hiện tại.
+
+4. Các webpage
+- Trang chủ (index.html): giới thiệu website, Pomodoro Timer, danh sách nhiệm vụ, tiến độ, trạng thái đăng nhập và đăng xuất.
+- Trang đăng ký (register.html): nhập tên, email, mật khẩu, xác nhận mật khẩu; tạo tài khoản bằng Firebase Authentication.
+- Trang đăng nhập (login.html): đăng nhập email/mật khẩu bằng Firebase Authentication; thông báo lỗi; Google Sign-In nếu đã cấu hình.
+
+5. Công nghệ
+HTML, CSS, JavaScript, Firebase Authentication và localStorage.
+
+6. Điểm khác biệt
+FocusForge khuyến khích người học bắt đầu từ một việc nhỏ, tập trung trong 25 phút và nhìn thấy tiến bộ cụ thể, giúp giảm cảm giác quá tải khi có nhiều bài tập.
+
+7. Phạm vi phiên bản thực hành
+Có ba webpage chính. Cần thay cấu hình mẫu trong firebase-config.js bằng cấu hình project Firebase cá nhân và bật Email/Password trong Firebase Console trước khi xác thực thật. Danh sách nhiệm vụ lưu localStorage, chưa đồng bộ cloud.

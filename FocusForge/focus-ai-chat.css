@@ -1,0 +1,249 @@
+/* Focus AI — giao diện chatbot của FocusForge */
+
+#ff-ai-toggle {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 2000;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  padding: 13px 17px;
+  border: 0;
+  border-radius: 15px;
+  background: #c5f36d;
+  color: #111827;
+  font-weight: 800;
+  cursor: pointer;
+  box-shadow: 0 12px 35px #0007;
+}
+
+.ff-ai-spark {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 9px;
+  background: #17223a;
+  color: #c5f36d;
+  font-size: 19px;
+}
+
+#ff-ai-panel {
+  position: fixed;
+  z-index: 2001;
+  right: 24px;
+  bottom: 86px;
+  display: none;
+  flex-direction: column;
+  width: min(390px, calc(100vw - 28px));
+  height: min(590px, calc(100vh - 110px));
+  overflow: hidden;
+  border: 1px solid #ffffff25;
+  border-radius: 20px;
+  background: #0f172a;
+  color: #f5f7ff;
+  font-family: Arial, Helvetica, sans-serif;
+  box-shadow: 0 22px 70px #0009;
+}
+
+#ff-ai-panel.ff-ai-open {
+  display: flex;
+}
+
+.ff-ai-head {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+  padding: 14px;
+  background: #17223a;
+  border-bottom: 1px solid #ffffff18;
+}
+
+.ff-ai-avatar {
+  display: grid;
+  place-items: center;
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 13px;
+  background: #c5f36d;
+  color: #17223a;
+  font-size: 21px;
+  font-weight: 900;
+}
+
+.ff-ai-head-main {
+  flex: 1;
+  min-width: 0;
+}
+
+.ff-ai-title {
+  font-size: 14px;
+  font-weight: 800;
+}
+
+.ff-ai-subtitle {
+  margin-top: 4px;
+  color: #a7b3cc;
+  font-size: 11px;
+}
+
+.ff-ai-status {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  margin-right: 5px;
+  border-radius: 50%;
+  background: #c5f36d;
+}
+
+.ff-ai-iconbtn {
+  width: 33px;
+  height: 33px;
+  border: 1px solid #ffffff22;
+  border-radius: 9px;
+  background: #ffffff08;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+.ff-ai-new {
+  border: 0;
+  background: transparent;
+  color: #c5f36d;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.ff-ai-tools {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  padding: 11px;
+  border-bottom: 1px solid #ffffff14;
+}
+
+.ff-ai-chip {
+  padding: 7px 9px;
+  border: 1px solid #ffffff25;
+  border-radius: 999px;
+  background: transparent;
+  color: #d6e0f4;
+  font-size: 10px;
+  cursor: pointer;
+}
+
+.ff-ai-chip:hover {
+  border-color: #c5f36d;
+  color: #c5f36d;
+}
+
+#ff-ai-messages {
+  display: flex;
+  flex: 1;
+  flex-direction: column;
+  gap: 11px;
+  overflow-y: auto;
+  padding: 15px;
+}
+
+.ff-ai-bubble {
+  max-width: 91%;
+  padding: 11px 13px;
+  border-radius: 14px;
+  overflow-wrap: anywhere;
+  white-space: pre-wrap;
+  font-size: 12px;
+  line-height: 1.65;
+}
+
+.ff-ai-bot {
+  align-self: flex-start;
+  border-bottom-left-radius: 5px;
+  background: #202c45;
+  color: #f5f7ff;
+}
+
+.ff-ai-user {
+  align-self: flex-end;
+  border-bottom-right-radius: 5px;
+  background: #c5f36d;
+  color: #142033;
+}
+
+.ff-ai-loading {
+  opacity: 0.7;
+  font-style: italic;
+}
+
+.ff-ai-error {
+  border: 1px solid #fb9b9b;
+  color: #ffd2d2;
+}
+
+.ff-ai-form {
+  display: flex;
+  gap: 8px;
+  padding: 12px;
+  border-top: 1px solid #ffffff18;
+  background: #111a2e;
+}
+
+.ff-ai-input {
+  flex: 1;
+  min-width: 0;
+  min-height: 43px;
+  max-height: 92px;
+  padding: 12px;
+  resize: vertical;
+  border: 1px solid #ffffff24;
+  border-radius: 12px;
+  outline: none;
+  background: #ffffff09;
+  color: #f5f7ff;
+  font: 12px Arial, sans-serif;
+}
+
+.ff-ai-input:focus {
+  border-color: #c5f36d;
+}
+
+.ff-ai-send {
+  min-width: 54px;
+  padding: 0 11px;
+  border: 0;
+  border-radius: 12px;
+  background: #c5f36d;
+  color: #111827;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.ff-ai-send:disabled {
+  opacity: 0.5;
+  cursor: wait;
+}
+
+.ff-ai-foot {
+  padding: 0 13px 10px;
+  background: #111a2e;
+  color: #8f9fbd;
+  font-size: 9px;
+  line-height: 1.5;
+}
+
+@media (max-width: 460px) {
+  #ff-ai-toggle {
+    right: 14px;
+    bottom: 14px;
+  }
+
+  #ff-ai-panel {
+    right: 14px;
+    bottom: 74px;
+    width: calc(100vw - 28px);
+    height: calc(100vh - 95px);
+  }
+}

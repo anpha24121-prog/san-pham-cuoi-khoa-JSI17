@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="vi" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#0b1020">
+  <meta name="description" content="FocusForge — không gian học tập giúp bạn lập kế hoạch, tập trung và theo dõi tiến bộ.">
+  <title>FocusForge — Tập trung có chiến lược</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="./focus-ai-chat.css">
+  <script type="module" src="home.js"></script>
+</head>
+<body>
+  <div class="app-shell">
+    <nav class="navbar wrap" aria-label="Điều hướng chính">
+      <a class="brand" href="index.html" aria-label="FocusForge trang chủ"><span class="brand-mark">✳</span><span>focus<span class="brand-accent">forge</span></span></a>
+      <div class="nav-links"><a class="nav-link active" href="#top">Trang chủ</a><a class="nav-link" href="#overview">Tiến độ</a><a class="nav-link" href="#workspace">Không gian học</a><a class="nav-link" href="#planner">Lịch học</a></div>
+      <div class="nav-actions nav-actions-right">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="Chuyển giao diện sáng tối" title="Chuyển giao diện"><span id="theme-toggle-icon">☼</span></button>
+        <div class="nav-actions" id="nav-auth"><a class="btn btn-quiet btn-small" href="login.html">Đăng nhập</a><a class="btn btn-primary btn-small" href="register.html">Bắt đầu miễn phí <span aria-hidden="true">↗</span></a></div>
+        <div class="nav-actions hidden" id="nav-user"><span class="user-pill" id="nav-user-email">Tài khoản</span><button class="btn btn-quiet btn-small" id="logout-btn" type="button">Đăng xuất</button></div>
+      </div>
+    </nav>
+
+    <main id="top">
+      <section class="hero wrap">
+        <div class="hero-copy">
+          <div class="eyebrow"><span class="eyebrow-dot"></span> HỌC TẬP CÓ CHỦ ĐÍCH</div>
+          <h1>Biến thời gian học<br>thành <span class="text-gradient">tiến bộ thật.</span></h1>
+          <p class="hero-description">Một không gian dành cho học sinh muốn bớt xao nhãng, chia mục tiêu lớn thành việc nhỏ và nhìn thấy mình tiến bộ mỗi ngày.</p>
+          <div class="hero-actions"><a class="btn btn-primary btn-large" href="#workspace">Bắt đầu tập trung <span aria-hidden="true">→</span></a><button class="btn btn-outline btn-large" id="hero-ai-plan" type="button">✦ Lập kế hoạch với AI</button></div>
+          <div class="hero-proof"><div class="avatar-stack"><span>F</span><span>O</span><span>✓</span></div><p><strong>Mỗi lần tập trung đều có giá trị</strong><br><span class="muted">Bắt đầu nhỏ. Quay lại đều đặn.</span></p><span class="proof-divider"></span><div><strong class="proof-score" id="hero-streak">0</strong><br><span class="muted">ngày giữ nhịp</span></div></div>
+        </div>
+        <div class="hero-art" aria-label="Minh họa bảng điều khiển học tập">
+          <div class="orb orb-one"></div><div class="orb orb-two"></div>
+          <div class="floating-note note-top"><span class="note-icon">↗</span><span><strong>Tiến bộ bắt đầu</strong><small>từ một việc nhỏ</small></span></div>
+          <div class="dashboard-card hero-dashboard">
+            <div class="dash-top"><div><span class="micro-label">KHÔNG GIAN CỦA BẠN</span><h3 id="hero-greeting">Sẵn sàng vào guồng?</h3></div><span class="live-dot" title="Sẵn sàng"></span></div>
+            <div class="focus-ring" id="hero-focus-ring"><div class="ring-inner"><span class="ring-small">PHIÊN TẬP TRUNG</span><strong id="hero-timer">25:00</strong><span class="ring-caption">một việc tại một thời điểm</span></div></div>
+            <div class="dash-stats"><div class="stat-block"><span class="stat-icon purple">✦</span><span><strong id="hero-today-minutes">0<span class="tiny-unit">m</span></strong><small>Tập trung hôm nay</small></span></div><div class="stat-block"><span class="stat-icon lime">✓</span><span><strong id="hero-today-tasks">0</strong><small>Việc đã hoàn thành</small></span></div></div>
+            <div class="progress-label"><span>Mục tiêu hôm nay</span><strong id="hero-goal-label">Bắt đầu thôi</strong></div><div class="progress-track"><span id="hero-goal-progress" style="width:0%"></span></div>
+          </div>
+          <div class="floating-note note-bottom"><span class="streak-icon">✦</span><span><strong>Giữ nhịp của riêng bạn</strong><small>Không cần hoàn hảo, chỉ cần đều đặn.</small></span></div>
+        </div>
+      </section>
+
+      <section class="overview-section wrap" id="overview">
+        <div class="section-heading overview-heading"><div><span class="eyebrow"><span class="eyebrow-dot"></span> TỔNG QUAN CỦA BẠN</span><h2>Tiến bộ được nhìn thấy.</h2><p class="muted">Số liệu được cập nhật từ các phiên tập trung và nhiệm vụ của bạn.</p></div><span class="sync-status" id="sync-status"><span class="sync-dot"></span><span id="sync-status-text">Đang chuẩn bị dữ liệu…</span></span></div>
+        <div class="metrics-grid">
+          <article class="metric-card"><div class="metric-card-top"><span class="metric-label">Tập trung hôm nay</span><span class="metric-icon icon-lilac">◷</span></div><strong class="metric-value" id="metric-focus-time">0 <small>phút</small></strong><span class="metric-foot" id="metric-focus-foot">Mọi hành trình đều bắt đầu từ 0</span></article>
+          <article class="metric-card"><div class="metric-card-top"><span class="metric-label">Phiên hoàn thành</span><span class="metric-icon icon-blue">✓</span></div><strong class="metric-value" id="metric-sessions">0</strong><span class="metric-foot">Phiên tập trung hôm nay</span></article>
+          <article class="metric-card"><div class="metric-card-top"><span class="metric-label">Nhiệm vụ hoàn thành</span><span class="metric-icon icon-lime">◆</span></div><strong class="metric-value" id="metric-tasks">0 <small>/ 0</small></strong><span class="metric-foot" id="metric-task-foot">Bắt đầu với một việc nhỏ</span></article>
+          <article class="metric-card"><div class="metric-card-top"><span class="metric-label">Chuỗi ngày tập trung</span><span class="metric-icon icon-orange">✦</span></div><strong class="metric-value" id="metric-streak">0 <small>ngày</small></strong><span class="metric-foot">Được tính từ phiên tập trung đã hoàn thành</span></article>
+        </div>
+        <div class="analytics-grid">
+          <section class="panel analytics-panel"><div class="panel-heading"><div><span class="micro-label">7 NGÀY GẦN NHẤT</span><h3>Nhịp học của bạn</h3></div><span class="panel-symbol">↗</span></div><div class="weekly-chart" id="weekly-chart" role="img" aria-label="Biểu đồ số phút tập trung trong 7 ngày gần nhất"></div><div class="chart-legend"><span><i></i> Phút tập trung</span><span id="weekly-total">0 phút trong tuần</span><button class="chart-ai-link" id="weekly-ai-review" type="button">Phân tích tuần với AI ↗</button></div></section>
+          <section class="panel insight-panel"><div class="panel-heading"><div><span class="micro-label">GỢI Ý TIẾP THEO</span><h3>Giữ đà tiến bộ</h3></div><span class="panel-symbol">✦</span></div><div class="insight-highlight"><span class="insight-orb">✦</span><div><strong id="insight-title">Bắt đầu bằng một phiên ngắn</strong><p id="insight-description">Chọn một nhiệm vụ rõ ràng và dành trọn 25 phút cho nó.</p></div></div><div class="insight-actions"><button class="btn btn-primary" id="insight-start" type="button">Bắt đầu ngay →</button><button class="btn btn-outline" id="insight-ai" type="button">Hỏi Focus AI</button></div><div class="mini-history" id="mini-history"><p class="muted small-note">Các phiên đã hoàn thành sẽ xuất hiện tại đây.</p></div></section>
+        </div>
+      </section>
+
+      <section class="workspace-section" id="workspace">
+        <div class="wrap workspace-wrap">
+          <div class="section-heading"><div><span class="eyebrow"><span class="eyebrow-dot"></span> KHÔNG GIAN LÀM VIỆC</span><h2>Chọn một việc. Bắt đầu ngay.</h2><p class="muted">Tập trung vào điều quan trọng nhất ở thời điểm hiện tại.</p></div><span class="workspace-tag"><span class="live-dot"></span> WORKSPACE</span></div>
+          <div class="workspace-grid workspace-grid-enhanced">
+            <section class="panel timer-panel">
+              <div class="panel-heading"><div><span class="micro-label">01 — TẬP TRUNG</span><h3>Phiên Pomodoro</h3></div><span class="panel-symbol">◷</span></div>
+              <div class="timer-modes" role="group" aria-label="Chọn chế độ đếm giờ"><button class="timer-mode is-active" data-mode="focus" type="button">Tập trung</button><button class="timer-mode" data-mode="short" type="button">Nghỉ ngắn</button><button class="timer-mode" data-mode="long" type="button">Nghỉ dài</button></div>
+              <div class="timer-circle" id="timer-circle"><div class="timer-content"><span id="timer-mode">FOCUS SESSION</span><strong id="timer-display">25:00</strong><small id="timer-subtitle">mỗi phiên là một bước tiến</small></div></div>
+              <div class="timer-controls"><button class="btn btn-primary" id="timer-start" type="button">▶ Bắt đầu tập trung</button><button class="btn btn-outline" id="timer-reset" type="button">↺ Đặt lại</button><button class="btn btn-outline focus-fullscreen-button" id="focus-mode-toggle" type="button">⛶ Toàn màn hình</button></div>
+              <div class="selected-task-banner"><span class="selected-task-icon">↳</span><div><small>ĐANG TẬP TRUNG VÀO</small><strong id="selected-task-name">Chưa chọn nhiệm vụ</strong></div><button id="clear-selected-task" class="icon-button" type="button" aria-label="Bỏ chọn nhiệm vụ" title="Bỏ chọn">×</button></div>
+              <p class="timer-note" id="timer-note" aria-live="polite">Hãy bắt đầu bằng một việc nhỏ nhất.</p>
+              <details class="timer-settings"><summary>⚙ Tùy chỉnh phiên học</summary><div class="settings-grid"><label>Phiên tập trung<select id="setting-focus"><option value="15">15 phút</option><option value="25" selected>25 phút</option><option value="30">30 phút</option><option value="45">45 phút</option><option value="50">50 phút</option></select></label><label>Nghỉ ngắn<select id="setting-short"><option value="3">3 phút</option><option value="5" selected>5 phút</option><option value="10">10 phút</option></select></label><label>Nghỉ dài<select id="setting-long"><option value="10">10 phút</option><option value="15" selected>15 phút</option><option value="20">20 phút</option><option value="30">30 phút</option></select></label><label class="setting-checkbox"><input type="checkbox" id="setting-sound" checked><span>Âm báo khi kết thúc</span></label><label class="setting-checkbox"><input type="checkbox" id="setting-ambient"><span>Âm nền mưa nhẹ</span></label><label class="setting-checkbox setting-full"><input type="checkbox" id="setting-auto-break"><span>Tự động bắt đầu giờ nghỉ sau phiên tập trung</span></label></div><p class="settings-note">Sau 4 phiên tập trung, hãy dành thời gian nghỉ dài hơn.</p></details>
+            </section>
+
+            <section class="panel tasks-panel">
+              <div class="panel-heading"><div><span class="micro-label">02 — KẾ HOẠCH</span><h3>Việc cần hoàn thành</h3></div><span class="task-count" id="task-count">0/0</span></div>
+              <div class="task-progress-row"><div class="task-progress"><span id="task-progress-fill"></span></div><span id="task-progress-text">0% hoàn thành</span></div>
+              <div class="task-tools"><label class="visually-hidden" for="task-search">Tìm nhiệm vụ</label><input id="task-search" type="search" placeholder="⌕ Tìm nhiệm vụ..." autocomplete="off"><label class="visually-hidden" for="task-subject-filter">Lọc theo môn học</label><select id="task-subject-filter"><option value="all">Tất cả môn</option><option>Toán</option><option>Tiếng Anh</option><option>Lập trình</option><option>Vật lý</option><option>Khác</option></select></div>
+              <div class="task-filters" role="group" aria-label="Lọc nhiệm vụ"><button class="task-filter is-active" type="button" data-filter="all">Tất cả</button><button class="task-filter" type="button" data-filter="active">Chưa xong</button><button class="task-filter" type="button" data-filter="done">Đã xong</button></div>
+              <ul class="task-list enhanced-task-list" id="task-list"></ul>
+              <div class="empty-tasks hidden" id="empty-tasks"><span>✓</span><strong>Không có nhiệm vụ phù hợp</strong><p>Thử thay đổi bộ lọc hoặc thêm một nhiệm vụ mới.</p></div>
+              <form class="add-task-form enhanced-add-task" id="add-task-form">
+                <div class="task-form-title"><strong id="task-form-heading">Thêm nhiệm vụ mới</strong><span class="small-note">* bắt buộc</span></div>
+                <label class="visually-hidden" for="new-task">Tên nhiệm vụ</label><input id="new-task" name="task" type="text" maxlength="120" placeholder="Ví dụ: Hoàn thành bài tập toán..." autocomplete="off" required>
+                <div class="task-form-grid"><label>Môn học<select id="new-task-subject"><option>Toán</option><option>Tiếng Anh</option><option>Lập trình</option><option>Vật lý</option><option>Khác</option></select></label><label>Ưu tiên<select id="new-task-priority"><option value="high">Cao</option><option value="medium" selected>Vừa</option><option value="low">Thấp</option></select></label><label>Thời lượng<select id="new-task-minutes"><option value="10">10 phút</option><option value="15" selected>15 phút</option><option value="25">25 phút</option><option value="30">30 phút</option><option value="45">45 phút</option><option value="60">60 phút</option><option value="90">90 phút</option></select></label><label>Hạn hoàn thành<input id="new-task-due" type="date"></label></div>
+                <div class="task-form-actions"><button type="submit" class="btn btn-primary" id="task-submit">＋ Thêm nhiệm vụ</button><button type="button" class="btn btn-quiet hidden" id="task-cancel-edit">Hủy chỉnh sửa</button></div>
+              </form>
+              <p class="small-note" id="task-save-note">Nhiệm vụ sẽ được lưu trên trình duyệt này.</p>
+            </section>
+          </div>
+          <div class="workspace-footer"><span class="footer-spark">✳</span><p><strong>Tiến bộ không cần ồn ào.</strong> Chỉ cần quay lại và làm thêm một chút.</p><button class="text-link text-button" id="profile-settings" type="button">Cài đặt tài khoản ↗</button></div>
+        </div>
+      </section>
+
+      <section class="planner-section wrap" id="planner">
+        <div class="section-heading"><div><span class="eyebrow"><span class="eyebrow-dot"></span> LÊN KẾ HOẠCH</span><h2>Một tuần rõ ràng hơn.</h2><p class="muted">Gắn ngày hạn vào nhiệm vụ để biết việc nào cần được ưu tiên.</p></div><button class="btn btn-outline" id="planner-ai" type="button">✦ Lập kế hoạch bằng AI</button></div>
+        <div class="planner-card panel"><div class="planner-days" id="planner-days" aria-label="Các ngày trong tuần"></div><div class="planner-agenda"><div class="agenda-heading"><div><span class="micro-label">LỊCH CỦA BẠN</span><h3 id="agenda-title">Việc sắp đến hạn</h3></div><span id="agenda-count" class="task-count">0 việc</span></div><div id="planner-agenda-list" class="planner-agenda-list"></div></div></div>
+      </section>
+
+      <section class="settings-section wrap" id="account-settings">
+        <details class="account-settings panel"><summary><span><span class="micro-label">CÁ NHÂN HÓA</span><strong>Cài đặt FocusForge</strong><small>Quản lý tên hiển thị, giao diện và dữ liệu.</small></span><span class="settings-chevron">⌄</span></summary><div class="account-settings-content"><div class="account-setting-row"><div><strong>Tên hiển thị</strong><p id="profile-name-label">Chưa đăng nhập</p></div><button class="btn btn-outline btn-small" id="change-display-name" type="button">Đổi tên</button></div><div class="account-setting-row"><div><strong>Giao diện</strong><p>Chọn giao diện phù hợp với bạn.</p></div><button class="btn btn-outline btn-small" id="settings-theme-toggle" type="button">Chuyển sáng / tối</button></div><div class="account-setting-row"><div><strong>Dữ liệu</strong><p id="data-status-detail">Dữ liệu đang được lưu trên thiết bị này.</p></div><button class="btn btn-outline btn-small" id="export-data" type="button">Xuất dữ liệu JSON</button></div></div></details>
+      </section>
+    </main>
+    <footer class="footer wrap"><a class="brand footer-brand" href="#top"><span class="brand-mark">✳</span><span>focus<span class="brand-accent">forge</span></span></a><p>Được thiết kế để học tập có chủ đích.</p><span>JSI · Dự án cuối khóa</span></footer>
+  </div>
+  <div id="app-toast" class="app-toast" role="status" aria-live="polite"></div>
+  <script src="./focus-ai-chat.js"></script>
+</body>
+</html>
